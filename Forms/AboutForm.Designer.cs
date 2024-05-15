@@ -1,6 +1,6 @@
-﻿namespace CourseWork
+﻿namespace CourseWork.Forms
 {
-    partial class UniSpecForm
+    partial class AboutForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,21 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             aboutToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
-            SavedLabel = new Label();
-            SaveButton = new Button();
-            NameUniLabel = new Label();
-            ContractGradeLabel = new Label();
-            BudgetGradeLabel = new Label();
-            AmountLabel = new Label();
-            EduFormLabel = new Label();
-            BudgetLabel = new Label();
-            NameSpecLabel = new Label();
+            label15 = new Label();
+            label14 = new Label();
+            label13 = new Label();
+            label12 = new Label();
+            label11 = new Label();
+            label10 = new Label();
+            label9 = new Label();
             label8 = new Label();
             label7 = new Label();
             label6 = new Label();
@@ -64,7 +63,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1116, 28);
-            menuStrip1.TabIndex = 3;
+            menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
@@ -79,7 +78,6 @@
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             exitToolStripMenuItem.Size = new Size(116, 26);
             exitToolStripMenuItem.Text = "E&xit";
-            exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // helpToolStripMenuItem
             // 
@@ -91,23 +89,21 @@
             // aboutToolStripMenuItem
             // 
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            aboutToolStripMenuItem.Size = new Size(224, 26);
+            aboutToolStripMenuItem.Size = new Size(142, 26);
             aboutToolStripMenuItem.Text = "&About...";
-            aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            panel1.AutoScroll = true;
             panel1.BackColor = Color.White;
-            panel1.Controls.Add(SavedLabel);
-            panel1.Controls.Add(SaveButton);
-            panel1.Controls.Add(NameUniLabel);
-            panel1.Controls.Add(ContractGradeLabel);
-            panel1.Controls.Add(BudgetGradeLabel);
-            panel1.Controls.Add(AmountLabel);
-            panel1.Controls.Add(EduFormLabel);
-            panel1.Controls.Add(BudgetLabel);
-            panel1.Controls.Add(NameSpecLabel);
+            panel1.Controls.Add(label15);
+            panel1.Controls.Add(label14);
+            panel1.Controls.Add(label13);
+            panel1.Controls.Add(label12);
+            panel1.Controls.Add(label11);
+            panel1.Controls.Add(label10);
+            panel1.Controls.Add(label9);
             panel1.Controls.Add(label8);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(label6);
@@ -116,179 +112,153 @@
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
+            panel1.Font = new Font("Segoe UI", 11F);
             panel1.Location = new Point(95, 78);
             panel1.Name = "panel1";
             panel1.Size = new Size(931, 891);
             panel1.TabIndex = 4;
             // 
-            // SavedLabel
+            // label15
             // 
-            SavedLabel.AutoSize = true;
-            SavedLabel.Location = new Point(51, 536);
-            SavedLabel.Name = "SavedLabel";
-            SavedLabel.Size = new Size(0, 20);
-            SavedLabel.TabIndex = 17;
+            label15.AutoSize = true;
+            label15.Location = new Point(437, 1863);
+            label15.Name = "label15";
+            label15.Size = new Size(0, 25);
+            label15.TabIndex = 15;
             // 
-            // SaveButton
+            // label14
             // 
-            SaveButton.Font = new Font("Segoe UI", 11F);
-            SaveButton.Location = new Point(51, 495);
-            SaveButton.Name = "SaveButton";
-            SaveButton.Size = new Size(112, 38);
-            SaveButton.TabIndex = 16;
-            SaveButton.Text = "Зберегти";
-            SaveButton.UseVisualStyleBackColor = true;
-            SaveButton.Click += SaveButton_Click;
+            label14.AutoSize = true;
+            label14.Location = new Point(691, 1755);
+            label14.Name = "label14";
+            label14.Size = new Size(175, 75);
+            label14.TabIndex = 14;
+            label14.Text = "Керівник:\r\nст. викл. каф. ПІ\r\nЧерепанова Ю. Ю.";
             // 
-            // NameUniLabel
+            // label13
             // 
-            NameUniLabel.AutoSize = true;
-            NameUniLabel.Font = new Font("Segoe UI", 11F);
-            NameUniLabel.Location = new Point(418, 192);
-            NameUniLabel.Name = "NameUniLabel";
-            NameUniLabel.Size = new Size(23, 25);
-            NameUniLabel.TabIndex = 15;
-            NameUniLabel.Text = "n";
+            label13.AutoSize = true;
+            label13.Location = new Point(58, 1755);
+            label13.Name = "label13";
+            label13.Size = new Size(251, 75);
+            label13.TabIndex = 13;
+            label13.Text = "Виконала:\r\nст. гр. ПЗПІ-23-5\r\nДеркач Анастасія Сергіївна";
             // 
-            // ContractGradeLabel
+            // label12
             // 
-            ContractGradeLabel.AutoSize = true;
-            ContractGradeLabel.Font = new Font("Segoe UI", 11F);
-            ContractGradeLabel.Location = new Point(418, 442);
-            ContractGradeLabel.Name = "ContractGradeLabel";
-            ContractGradeLabel.Size = new Size(23, 25);
-            ContractGradeLabel.TabIndex = 14;
-            ContractGradeLabel.Text = "n";
+            label12.AutoSize = true;
+            label12.Location = new Point(58, 1189);
+            label12.Name = "label12";
+            label12.Size = new Size(808, 500);
+            label12.TabIndex = 12;
+            label12.Text = resources.GetString("label12.Text");
             // 
-            // BudgetGradeLabel
+            // label11
             // 
-            BudgetGradeLabel.AutoSize = true;
-            BudgetGradeLabel.Font = new Font("Segoe UI", 11F);
-            BudgetGradeLabel.Location = new Point(418, 393);
-            BudgetGradeLabel.Name = "BudgetGradeLabel";
-            BudgetGradeLabel.Size = new Size(23, 25);
-            BudgetGradeLabel.TabIndex = 13;
-            BudgetGradeLabel.Text = "n";
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 11F, FontStyle.Underline);
+            label11.Location = new Point(58, 1134);
+            label11.Name = "label11";
+            label11.Size = new Size(350, 25);
+            label11.TabIndex = 11;
+            label11.Text = "4. Використання сторінки \"Збережене\"";
             // 
-            // AmountLabel
+            // label10
             // 
-            AmountLabel.AutoSize = true;
-            AmountLabel.Font = new Font("Segoe UI", 11F);
-            AmountLabel.Location = new Point(418, 344);
-            AmountLabel.Name = "AmountLabel";
-            AmountLabel.Size = new Size(23, 25);
-            AmountLabel.TabIndex = 12;
-            AmountLabel.Text = "n";
+            label10.AutoSize = true;
+            label10.Location = new Point(58, 1040);
+            label10.Name = "label10";
+            label10.Size = new Size(752, 75);
+            label10.TabIndex = 10;
+            label10.Text = resources.GetString("label10.Text");
             // 
-            // EduFormLabel
+            // label9
             // 
-            EduFormLabel.AutoSize = true;
-            EduFormLabel.Font = new Font("Segoe UI", 11F);
-            EduFormLabel.Location = new Point(418, 242);
-            EduFormLabel.Name = "EduFormLabel";
-            EduFormLabel.Size = new Size(23, 25);
-            EduFormLabel.TabIndex = 11;
-            EduFormLabel.Text = "n";
-            // 
-            // BudgetLabel
-            // 
-            BudgetLabel.AutoSize = true;
-            BudgetLabel.Font = new Font("Segoe UI", 11F);
-            BudgetLabel.Location = new Point(418, 293);
-            BudgetLabel.Name = "BudgetLabel";
-            BudgetLabel.Size = new Size(23, 25);
-            BudgetLabel.TabIndex = 10;
-            BudgetLabel.Text = "n";
-            // 
-            // NameSpecLabel
-            // 
-            NameSpecLabel.AutoSize = true;
-            NameSpecLabel.Font = new Font("Segoe UI", 11F);
-            NameSpecLabel.Location = new Point(418, 143);
-            NameSpecLabel.Name = "NameSpecLabel";
-            NameSpecLabel.Size = new Size(23, 25);
-            NameSpecLabel.TabIndex = 9;
-            NameSpecLabel.Text = "n";
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 11F, FontStyle.Underline);
+            label9.Location = new Point(58, 984);
+            label9.Name = "label9";
+            label9.Size = new Size(425, 25);
+            label9.TabIndex = 9;
+            label9.Text = "3. Збереження університетів та спеціальностей";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 11F);
-            label8.Location = new Point(51, 442);
+            label8.Location = new Point(58, 616);
             label8.Name = "label8";
-            label8.Size = new Size(355, 25);
+            label8.Size = new Size(823, 350);
             label8.TabIndex = 8;
-            label8.Text = "Прохідний бал на контракт у 2023 році:";
+            label8.Text = resources.GetString("label8.Text");
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 11F);
-            label7.Location = new Point(51, 393);
+            label7.Font = new Font("Segoe UI", 11F, FontStyle.Underline);
+            label7.Location = new Point(58, 571);
             label7.Name = "label7";
-            label7.Size = new Size(346, 25);
+            label7.Size = new Size(377, 25);
             label7.TabIndex = 7;
-            label7.Text = "Прохідний бал на бюджет у 2023 році:";
+            label7.Text = "2. Пошук спеціальностей та їх сортування";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 11F);
-            label6.Location = new Point(51, 293);
+            label6.Location = new Point(58, 422);
             label6.Name = "label6";
-            label6.Size = new Size(281, 25);
+            label6.Size = new Size(747, 125);
             label6.TabIndex = 6;
-            label6.Text = "Можливість вступу на бюджет:";
+            label6.Text = resources.GetString("label6.Text");
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 11F);
-            label5.Location = new Point(51, 344);
+            label5.Location = new Point(58, 335);
             label5.Name = "label5";
-            label5.Size = new Size(273, 25);
+            label5.Size = new Size(793, 75);
             label5.TabIndex = 5;
-            label5.Text = "Вартість на рік за контрактом:";
+            label5.Text = resources.GetString("label5.Text");
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 11F);
-            label4.Location = new Point(51, 242);
+            label4.Font = new Font("Segoe UI", 11F, FontStyle.Underline);
+            label4.Location = new Point(58, 285);
             label4.Name = "label4";
-            label4.Size = new Size(164, 25);
+            label4.Size = new Size(277, 25);
             label4.TabIndex = 4;
-            label4.Text = "Форма навчання:";
+            label4.Text = "1. Пошук по базі університетів\r\n";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 11F);
-            label3.Location = new Point(51, 192);
+            label3.Font = new Font("Segoe UI", 11F, FontStyle.Italic);
+            label3.Location = new Point(58, 237);
             label3.Name = "label3";
-            label3.Size = new Size(107, 25);
+            label3.Size = new Size(239, 25);
             label3.TabIndex = 3;
-            label3.Text = "Назва ЗВО:";
+            label3.Text = "Основні функції програми";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 11F);
-            label2.Location = new Point(51, 143);
+            label2.Location = new Point(58, 110);
             label2.Name = "label2";
-            label2.Size = new Size(192, 25);
+            label2.Size = new Size(829, 100);
             label2.TabIndex = 2;
-            label2.Text = "Назва спеціальності:";
+            label2.Text = resources.GetString("label2.Text");
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16F);
-            label1.Location = new Point(51, 44);
+            label1.Location = new Point(42, 39);
             label1.Name = "label1";
-            label1.Size = new Size(390, 37);
+            label1.Size = new Size(195, 37);
             label1.TabIndex = 1;
-            label1.Text = "Інформація про спеціальність";
+            label1.Text = "Про програму";
             // 
             // GoBackButton
             // 
@@ -296,21 +266,21 @@
             GoBackButton.Location = new Point(881, 40);
             GoBackButton.Name = "GoBackButton";
             GoBackButton.Size = new Size(141, 33);
-            GoBackButton.TabIndex = 0;
+            GoBackButton.TabIndex = 5;
             GoBackButton.Text = "Назад";
             GoBackButton.UseVisualStyleBackColor = true;
             GoBackButton.Click += GoBackButton_Click;
             // 
-            // UniSpecForm
+            // AboutForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(1116, 981);
+            Controls.Add(GoBackButton);
             Controls.Add(panel1);
             Controls.Add(menuStrip1);
-            Controls.Add(GoBackButton);
-            Name = "UniSpecForm";
+            Name = "AboutForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Довідник абітурієнта";
             menuStrip1.ResumeLayout(false);
@@ -329,23 +299,21 @@
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private Panel panel1;
+        private Label label1;
         private Button GoBackButton;
-        private Label label5;
+        private Label label2;
         private Label label4;
         private Label label3;
-        private Label label2;
-        private Label label1;
-        private Label label7;
+        private Label label5;
         private Label label6;
-        private Label NameUniLabel;
-        private Label ContractGradeLabel;
-        private Label BudgetGradeLabel;
-        private Label AmountLabel;
-        private Label EduFormLabel;
-        private Label BudgetLabel;
-        private Label NameSpecLabel;
         private Label label8;
-        private Button SaveButton;
-        private Label SavedLabel;
+        private Label label7;
+        private Label label10;
+        private Label label9;
+        private Label label12;
+        private Label label11;
+        private Label label14;
+        private Label label13;
+        private Label label15;
     }
 }

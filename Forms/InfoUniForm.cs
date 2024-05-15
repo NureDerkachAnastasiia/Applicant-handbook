@@ -12,11 +12,16 @@ namespace CourseWork.Forms
 {
     public partial class InfoUniForm : Form
     {
-        UniversitiesForm _previousForm;
-        public InfoUniForm(UniversitiesForm previousForm)
+        Form _previousForm;
+        University university;
+        MainForm _mainForm;
+        public InfoUniForm(Form previousForm, University uni, MainForm mainForm)
         {
             InitializeComponent();
             _previousForm = previousForm;
+            university = uni;
+            _mainForm = mainForm;
+
         }
 
         public void FillInfoUniForm(University uni)
@@ -70,7 +75,7 @@ namespace CourseWork.Forms
             }
             this.Hide();
             Speciality spec = (Speciality)SpeciDataGridView.Rows[e.RowIndex].DataBoundItem;
-            UniSpecForm form = new UniSpecForm(this);
+            UniSpecForm form = new UniSpecForm(this, _mainForm, spec);
             form.Show();
             form.FillUniSpecForm(spec);
         }
@@ -86,6 +91,24 @@ namespace CourseWork.Forms
         private void SpeciDataGridView_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             SpeciDataGridView.Cursor = Cursors.Default;
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            if (_previousForm is SavedForm || _mainForm.directory.ContainsUni(university))
+            {
+                SavedLabel.Text = "Заклад вищої освіти збережений.";
+                return;
+            }
+            _mainForm.directory.AddToSavedUnis(university);
+            SavedLabel.Text = "Заклад вищої освіти збережений.";
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AboutForm form = new AboutForm(this);
+            form.Show();
         }
     }
 }

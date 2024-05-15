@@ -1,10 +1,12 @@
-﻿using System.Windows.Forms;
+﻿using CourseWork.Forms;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CourseWork
 {
     public partial class MainForm : Form
     {
-        Directory directory = new Directory();
+        public Directory directory = new Directory();
         List<Speciality> searchedSpecis;
 
         public MainForm()
@@ -13,7 +15,6 @@ namespace CourseWork
             EduFormComboBox.Items.Add("неважливо");
             EduFormComboBox.Items.Add("денна");
             EduFormComboBox.Items.Add("заочна");
-            VinnytskaLabel.Cursor = Cursors.Hand;
             VolynskaLabel.Cursor = Cursors.Hand;
             DniproLabel.Cursor = Cursors.Hand;
             DonetskaLabel.Cursor = Cursors.Hand;
@@ -82,20 +83,21 @@ namespace CourseWork
             if (searchedSpecis != null)
             {
                 SpecDataGridView.ColumnHeadersHeight = 70;
-            }
-            SpecDataGridView.Columns["NameColumn"].DataPropertyName = "Name";
-            SpecDataGridView.Columns["EduColumn"].DataPropertyName = "EducationForm";
-            SpecDataGridView.Columns["UniColumn"].DataPropertyName = "Uni";
-            foreach (DataGridViewColumn column in SpecDataGridView.Columns)
-            {
-                if (column.Name != "NameColumn" && column.Name != "EduColumn" && column.Name != "UniColumn")
+                SpecDataGridView.Columns["NameColumn"].DataPropertyName = "Name";
+                SpecDataGridView.Columns["EduColumn"].DataPropertyName = "EducationForm";
+                SpecDataGridView.Columns["UniColumn"].DataPropertyName = "Uni";
+                foreach (DataGridViewColumn column in SpecDataGridView.Columns)
                 {
-                    column.Visible = false;
+                    if (column.Name != "NameColumn" && column.Name != "EduColumn" && column.Name != "UniColumn")
+                    {
+                        column.Visible = false;
+                    }
                 }
+                SpecDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                SpecDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                SpecDataGridView.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                SpecDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
-            SpecDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            SpecDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            SpecDataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
         private void SpecDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -105,7 +107,7 @@ namespace CourseWork
             }
             this.Hide();
             Speciality spec = (Speciality)SpecDataGridView.Rows[e.RowIndex].DataBoundItem;
-            UniSpecForm form = new UniSpecForm(this);
+            UniSpecForm form = new UniSpecForm(this, this, spec);
             form.Show();
             form.FillUniSpecForm(spec);
         }
@@ -115,18 +117,39 @@ namespace CourseWork
             {
                 try
                 {
-                    searchedSpecis = searchedSpecis.OrderBy(s => Convert.ToInt32(s.BudgetGrade)).ToList();
-                    FillSpecDataGridView();
+                    List<Speciality> bs = new List<Speciality>();
+                    List<Speciality> cs = new List<Speciality>();
+                    if (searchedSpecis != null)
+                    {
+                        foreach (var spec in searchedSpecis)
+                        {
+                            if (spec.Budget == "Так")
+                            {
+                                bs.Add(spec);
+                            }
+                            else if (spec.Budget == "Ні")
+                            {
+                                cs.Add(spec);
+                            }
+                        }
+                        bs = bs.OrderBy(s => Convert.ToInt32(s.BudgetGrade)).ToList();
+                        searchedSpecis = bs.Concat(cs).ToList();
+                        FillSpecDataGridView();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Жодної спеціальності не було знайдено. Немає що сортувати.", "Пустий список");
+                    }
                 }
-                catch(FormatException ex)
+                catch (FormatException ex)
                 {
                     MessageBox.Show("Здається, не всі спеціальності мають можливість вступу на бюджет.\nСпочатку відмітьте поле <Тільки спеціальності з можливістю вступу на бюджет>, натисніть на кнопку <Шукати> та виконайте сортування ще раз.");
                 }
-                catch(ArgumentNullException ex)
+                catch (ArgumentNullException ex)
                 {
                     MessageBox.Show("Жодної спеціальності не було знайдено. Немає що сортувати.");
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Невідома помилка.");
                 }
@@ -164,10 +187,11 @@ namespace CourseWork
                 }
             }
         }
-
+        #region CityLabels
         private void VinnytskaLabel_MouseEnter(object sender, EventArgs e)
         {
             VinnytskaLabel.ForeColor = SystemColors.HotTrack;
+            VinnytskaLabel.Cursor = Cursors.Hand;
         }
 
         private void VinnytskaLabel_MouseLeave(object sender, EventArgs e)
@@ -187,6 +211,7 @@ namespace CourseWork
         private void VolynskaLabel_MouseEnter(object sender, EventArgs e)
         {
             VolynskaLabel.ForeColor = SystemColors.HotTrack;
+            VolynskaLabel.Cursor = Cursors.Hand;
         }
 
         private void VolynskaLabel_MouseLeave(object sender, EventArgs e)
@@ -206,6 +231,7 @@ namespace CourseWork
         private void DniproLabel_MouseEnter(object sender, EventArgs e)
         {
             DniproLabel.ForeColor = SystemColors.HotTrack;
+            DniproLabel.Cursor = Cursors.Hand;
         }
 
         private void DniproLabel_MouseLeave(object sender, EventArgs e)
@@ -225,6 +251,7 @@ namespace CourseWork
         private void DonetskaLabel_MouseEnter(object sender, EventArgs e)
         {
             DonetskaLabel.ForeColor = SystemColors.HotTrack;
+            DonetskaLabel.Cursor = Cursors.Hand;
         }
 
         private void DonetskaLabel_MouseLeave(object sender, EventArgs e)
@@ -244,6 +271,7 @@ namespace CourseWork
         private void ZhytomyrLabel_MouseEnter(object sender, EventArgs e)
         {
             ZhytomyrLabel.ForeColor = SystemColors.HotTrack;
+            ZhytomyrLabel.Cursor = Cursors.Hand;
         }
 
         private void ZhytomyrLabel_MouseLeave(object sender, EventArgs e)
@@ -263,6 +291,7 @@ namespace CourseWork
         private void ZakarpatLabel_MouseEnter(object sender, EventArgs e)
         {
             ZakarpatLabel.ForeColor = SystemColors.HotTrack;
+            ZakarpatLabel.Cursor = Cursors.Hand;
         }
 
         private void ZakarpatLabel_MouseLeave(object sender, EventArgs e)
@@ -282,6 +311,7 @@ namespace CourseWork
         private void ZaporizkaLabel_MouseEnter(object sender, EventArgs e)
         {
             ZaporizkaLabel.ForeColor = SystemColors.HotTrack;
+            ZaporizkaLabel.Cursor = Cursors.Hand;
         }
 
         private void ZaporizkaLabel_MouseLeave(object sender, EventArgs e)
@@ -301,6 +331,7 @@ namespace CourseWork
         private void IvanLabel_MouseEnter(object sender, EventArgs e)
         {
             IvanLabel.ForeColor = SystemColors.HotTrack;
+            IvanLabel.Cursor = Cursors.Hand;
         }
 
         private void IvanLabel_MouseLeave(object sender, EventArgs e)
@@ -320,6 +351,7 @@ namespace CourseWork
         private void KyivskaLabel_MouseEnter(object sender, EventArgs e)
         {
             KyivskaLabel.ForeColor = SystemColors.HotTrack;
+            KyivskaLabel.Cursor = Cursors.Hand;
         }
 
         private void KyivskaLabel_MouseLeave(object sender, EventArgs e)
@@ -339,6 +371,7 @@ namespace CourseWork
         private void MKyivLabel_MouseEnter(object sender, EventArgs e)
         {
             MKyivLabel.ForeColor = SystemColors.HotTrack;
+            MKyivLabel.Cursor = Cursors.Hand;
         }
 
         private void MKyivLabel_MouseLeave(object sender, EventArgs e)
@@ -358,6 +391,7 @@ namespace CourseWork
         private void KirovogradLabel_MouseEnter(object sender, EventArgs e)
         {
             KirovogradLabel.ForeColor = SystemColors.HotTrack;
+            KirovogradLabel.Cursor = Cursors.Hand;
         }
 
         private void KirovogradLabel_MouseLeave(object sender, EventArgs e)
@@ -377,6 +411,7 @@ namespace CourseWork
         private void LuganskaLabel_MouseEnter(object sender, EventArgs e)
         {
             LuganskaLabel.ForeColor = SystemColors.HotTrack;
+            LuganskaLabel.Cursor = Cursors.Hand;
         }
 
         private void LuganskaLabel_MouseLeave(object sender, EventArgs e)
@@ -396,6 +431,7 @@ namespace CourseWork
         private void LvivskaLabel_MouseEnter(object sender, EventArgs e)
         {
             LvivskaLabel.ForeColor = SystemColors.HotTrack;
+            LvivskaLabel.Cursor = Cursors.Hand;
         }
 
         private void LvivskaLabel_MouseLeave(object sender, EventArgs e)
@@ -415,6 +451,7 @@ namespace CourseWork
         private void MykolaivLabel_MouseEnter(object sender, EventArgs e)
         {
             MykolaivLabel.ForeColor = SystemColors.HotTrack;
+            MykolaivLabel.Cursor = Cursors.Hand;
         }
 
         private void MykolaivLabel_MouseLeave(object sender, EventArgs e)
@@ -434,6 +471,7 @@ namespace CourseWork
         private void OdeskaLabel_MouseEnter(object sender, EventArgs e)
         {
             OdeskaLabel.ForeColor = SystemColors.HotTrack;
+            OdeskaLabel.Cursor = Cursors.Hand;
         }
 
         private void OdeskaLabel_MouseLeave(object sender, EventArgs e)
@@ -462,6 +500,7 @@ namespace CourseWork
         private void PoltavskaLabel_MouseEnter(object sender, EventArgs e)
         {
             PoltavskaLabel.ForeColor = SystemColors.HotTrack;
+            PoltavskaLabel.Cursor = Cursors.Hand;
         }
 
         private void PoltavskaLabel_MouseLeave(object sender, EventArgs e)
@@ -472,6 +511,7 @@ namespace CourseWork
         private void RivnenskaLabel_MouseEnter(object sender, EventArgs e)
         {
             RivnenskaLabel.ForeColor = SystemColors.HotTrack;
+            RivnenskaLabel.Cursor = Cursors.Hand;
         }
 
         private void RivnenskaLabel_MouseLeave(object sender, EventArgs e)
@@ -491,6 +531,7 @@ namespace CourseWork
         private void SumskaLabel_MouseEnter(object sender, EventArgs e)
         {
             SumskaLabel.ForeColor = SystemColors.HotTrack;
+            SumskaLabel.Cursor = Cursors.Hand;
         }
 
         private void SumskaLabel_MouseLeave(object sender, EventArgs e)
@@ -510,6 +551,7 @@ namespace CourseWork
         private void TernopilskaLabel_MouseEnter(object sender, EventArgs e)
         {
             TernopilskaLabel.ForeColor = SystemColors.HotTrack;
+            TernopilskaLabel.Cursor = Cursors.Hand;
         }
 
         private void TernopilskaLabel_MouseLeave(object sender, EventArgs e)
@@ -529,6 +571,7 @@ namespace CourseWork
         private void KharkivLabel_MouseEnter(object sender, EventArgs e)
         {
             KharkivLabel.ForeColor = SystemColors.HotTrack;
+            KharkivLabel.Cursor = Cursors.Hand;
         }
 
         private void KharkivLabel_MouseLeave(object sender, EventArgs e)
@@ -548,6 +591,7 @@ namespace CourseWork
         private void KhersonLabel_MouseEnter(object sender, EventArgs e)
         {
             KhersonLabel.ForeColor = SystemColors.HotTrack;
+            KhersonLabel.Cursor = Cursors.Hand;
         }
 
         private void KhersonLabel_MouseLeave(object sender, EventArgs e)
@@ -567,6 +611,7 @@ namespace CourseWork
         private void KhmelnytskaLabel_MouseEnter(object sender, EventArgs e)
         {
             KhmelnytskaLabel.ForeColor = SystemColors.HotTrack;
+            KhmelnytskaLabel.Cursor = Cursors.Hand;
         }
 
         private void KhmelnytskaLabel_MouseLeave(object sender, EventArgs e)
@@ -586,6 +631,7 @@ namespace CourseWork
         private void CherkaskaLabel_MouseEnter(object sender, EventArgs e)
         {
             CherkaskaLabel.ForeColor = SystemColors.HotTrack;
+            CherkaskaLabel.Cursor = Cursors.Hand;
         }
 
         private void CherkaskaLabel_MouseLeave(object sender, EventArgs e)
@@ -605,6 +651,7 @@ namespace CourseWork
         private void ChernivetskaLabel_MouseEnter(object sender, EventArgs e)
         {
             ChernivetskaLabel.ForeColor = SystemColors.HotTrack;
+            ChernivetskaLabel.Cursor = Cursors.Hand;
         }
 
         private void ChernivetskaLabel_MouseLeave(object sender, EventArgs e)
@@ -624,6 +671,7 @@ namespace CourseWork
         private void ChernigivskaLabel_MouseEnter(object sender, EventArgs e)
         {
             ChernigivskaLabel.ForeColor = SystemColors.HotTrack;
+            ChernigivskaLabel.Cursor = Cursors.Hand;
         }
 
         private void ChernigivskaLabel_MouseLeave(object sender, EventArgs e)
@@ -639,7 +687,7 @@ namespace CourseWork
             UniversitiesForm form = new UniversitiesForm(this, unis);
             form.Show();
         }
-
+        #endregion
         private void SpecDataGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
@@ -653,6 +701,63 @@ namespace CourseWork
             SpecDataGridView.Cursor = Cursors.Default;
         }
 
-        
+        private void SavedButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SavedForm form = new SavedForm(this);
+            form.Show();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            directory.SaveData();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AboutForm form = new AboutForm(this);
+            form.Show();
+        }
+
+        private void CityTextBox_TextChanged(object sender, EventArgs e)
+        {
+            int maxLength = 50;
+            if (CityTextBox.Text.Length > maxLength)
+            {
+                CityTextBox.Text = CityTextBox.Text.Substring(0, maxLength);
+                CityTextBox.SelectionStart = maxLength;
+            }
+        }
+
+        private void NameUniTextBox_TextChanged(object sender, EventArgs e)
+        {
+            int maxLength = 100;
+            if (NameUniTextBox.Text.Length > maxLength)
+            {
+                NameUniTextBox.Text = NameUniTextBox.Text.Substring(0, maxLength);
+                NameUniTextBox.SelectionStart = maxLength;
+            }
+        }
+
+        private void NameSpeciTextBox_TextChanged(object sender, EventArgs e)
+        {
+            int maxLength = 100;
+            if (CityTextBox.Text.Length > maxLength)
+            {
+                NameSpeciTextBox.Text = NameSpeciTextBox.Text.Substring(0, maxLength);
+                NameSpeciTextBox.SelectionStart = maxLength;
+            }
+        }
+
+        private void UniNameSpecTextBox_TextChanged(object sender, EventArgs e)
+        {
+            int maxLength = 100;
+            if (UniNameSpecTextBox.Text.Length > maxLength)
+            {
+                UniNameSpecTextBox.Text = UniNameSpecTextBox.Text.Substring(0, maxLength);
+                UniNameSpecTextBox.SelectionStart = maxLength;
+            }
+        }
     }
 }

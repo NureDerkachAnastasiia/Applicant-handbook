@@ -27,6 +27,17 @@ namespace CourseWork
             Uni = uni;
             EducationForm = form;
         }
-        
+
+        //Визначення, чи дорівнює об'єкт заданій спеціальності
+        //
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            Speciality other = (Speciality)obj;
+            return Name == other.Name && Uni == other.Uni && EducationForm == other.EducationForm;
+        }
     }
 }

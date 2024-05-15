@@ -34,5 +34,17 @@ namespace CourseWork
             Name = name;
             City = city;
         }
+
+        //Визначення, чи дорівнює об'єкт заданому університету
+        //
+        public override bool Equals(object? obj)
+        {
+            if(obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            University other = (University)obj;
+            return Name == other.Name && City == other.City;
+        }
     }
 }

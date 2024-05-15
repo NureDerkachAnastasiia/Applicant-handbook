@@ -13,18 +13,16 @@ namespace CourseWork
 {
     public partial class UniSpecForm : Form
     {
-        InfoUniForm _preInfoUniForm;
-        MainForm _preMainForm;
-        public UniSpecForm(InfoUniForm preInfoUniForm)
-        {
-            InitializeComponent();
-            _preInfoUniForm = preInfoUniForm;
-        }
+        Form _previousForm;
+        MainForm _mainForm;
+        Speciality speciality;
 
-        public UniSpecForm(MainForm preMainForm)
+        public UniSpecForm(Form form, MainForm mainForm, Speciality spec)
         {
             InitializeComponent();
-            _preMainForm = preMainForm;
+            _previousForm = form;
+            _mainForm = mainForm;
+            speciality = spec;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -46,12 +44,25 @@ namespace CourseWork
         private void GoBackButton_Click(object sender, EventArgs e)
         {
             this.Close();
-            if(_preMainForm != null)
+            _previousForm.Show();
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            if (_previousForm is SavedForm || _mainForm.directory.ContainsSpec(speciality))
             {
-                _preMainForm.Show();
+                SavedLabel.Text = "Спеціальність збережено.";
                 return;
             }
-            _preInfoUniForm.Show();
+            _mainForm.directory.AddToSavedSpecis(speciality);
+            SavedLabel.Text = "Спеціальність збережено.";
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AboutForm form = new AboutForm(this);
+            form.Show();
         }
     }
 }

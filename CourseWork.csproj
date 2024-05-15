@@ -8,4 +8,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Forms\InfoForm.cs" />
+    <Compile Remove="Forms\InfoForm.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Forms\InfoForm.resx" />
+  </ItemGroup>
+
 </Project>

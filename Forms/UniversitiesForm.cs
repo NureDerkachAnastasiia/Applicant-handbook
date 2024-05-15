@@ -20,7 +20,7 @@ namespace CourseWork
             InitializeComponent();
             _previousForm = previousForm;
             universities = unis;
-            
+
             UniDataGridView.DataSource = universities;
         }
 
@@ -63,7 +63,7 @@ namespace CourseWork
             }
             this.Hide();
             University uni = (University)UniDataGridView.Rows[e.RowIndex].DataBoundItem;
-            InfoUniForm form = new InfoUniForm(this);
+            InfoUniForm form = new InfoUniForm(this, uni, _previousForm);
             form.Show();
             form.FillInfoUniForm(uni);
         }
@@ -79,6 +79,13 @@ namespace CourseWork
         private void UniDataGridView_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             UniDataGridView.Cursor = Cursors.Default;
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AboutForm form = new AboutForm(this);
+            form.Show();
         }
     }
 }

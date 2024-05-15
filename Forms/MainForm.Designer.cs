@@ -28,41 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
-            newToolStripMenuItem = new ToolStripMenuItem();
-            openToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator = new ToolStripSeparator();
-            saveToolStripMenuItem = new ToolStripMenuItem();
-            saveAsToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator1 = new ToolStripSeparator();
-            printToolStripMenuItem = new ToolStripMenuItem();
-            printPreviewToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator2 = new ToolStripSeparator();
             exitToolStripMenuItem = new ToolStripMenuItem();
-            editToolStripMenuItem = new ToolStripMenuItem();
-            undoToolStripMenuItem = new ToolStripMenuItem();
-            redoToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator3 = new ToolStripSeparator();
-            cutToolStripMenuItem = new ToolStripMenuItem();
-            copyToolStripMenuItem = new ToolStripMenuItem();
-            pasteToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator4 = new ToolStripSeparator();
-            selectAllToolStripMenuItem = new ToolStripMenuItem();
-            toolsToolStripMenuItem = new ToolStripMenuItem();
-            customizeToolStripMenuItem = new ToolStripMenuItem();
-            optionsToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
-            contentsToolStripMenuItem = new ToolStripMenuItem();
-            indexToolStripMenuItem = new ToolStripMenuItem();
-            searchToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator5 = new ToolStripSeparator();
             aboutToolStripMenuItem = new ToolStripMenuItem();
-            tabControl1 = new TabControl();
+            MainTabControl = new TabControl();
             tabPage1 = new TabPage();
             label32 = new Label();
             ChernigivskaLabel = new Label();
@@ -112,8 +86,9 @@
             NameSpeciTextBox = new TextBox();
             label7 = new Label();
             label5 = new Label();
+            SavedButton = new Button();
             menuStrip1.SuspendLayout();
-            tabControl1.SuspendLayout();
+            MainTabControl.SuspendLayout();
             tabPage1.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpecDataGridView).BeginInit();
@@ -123,7 +98,7 @@
             // 
             menuStrip1.BackColor = Color.FromArgb(137, 171, 255);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, editToolStripMenuItem, toolsToolStripMenuItem, helpToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1116, 28);
@@ -132,213 +107,43 @@
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { newToolStripMenuItem, openToolStripMenuItem, toolStripSeparator, saveToolStripMenuItem, saveAsToolStripMenuItem, toolStripSeparator1, printToolStripMenuItem, printPreviewToolStripMenuItem, toolStripSeparator2, exitToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exitToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(46, 24);
             fileToolStripMenuItem.Text = "&File";
             // 
-            // newToolStripMenuItem
-            // 
-            newToolStripMenuItem.Image = (Image)resources.GetObject("newToolStripMenuItem.Image");
-            newToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            newToolStripMenuItem.Name = "newToolStripMenuItem";
-            newToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.N;
-            newToolStripMenuItem.Size = new Size(181, 26);
-            newToolStripMenuItem.Text = "&New";
-            // 
-            // openToolStripMenuItem
-            // 
-            openToolStripMenuItem.Image = (Image)resources.GetObject("openToolStripMenuItem.Image");
-            openToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            openToolStripMenuItem.Name = "openToolStripMenuItem";
-            openToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.O;
-            openToolStripMenuItem.Size = new Size(181, 26);
-            openToolStripMenuItem.Text = "&Open";
-            // 
-            // toolStripSeparator
-            // 
-            toolStripSeparator.Name = "toolStripSeparator";
-            toolStripSeparator.Size = new Size(178, 6);
-            // 
-            // saveToolStripMenuItem
-            // 
-            saveToolStripMenuItem.Image = (Image)resources.GetObject("saveToolStripMenuItem.Image");
-            saveToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            saveToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.S;
-            saveToolStripMenuItem.Size = new Size(181, 26);
-            saveToolStripMenuItem.Text = "&Save";
-            // 
-            // saveAsToolStripMenuItem
-            // 
-            saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            saveAsToolStripMenuItem.Size = new Size(181, 26);
-            saveAsToolStripMenuItem.Text = "Save &As";
-            // 
-            // toolStripSeparator1
-            // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(178, 6);
-            // 
-            // printToolStripMenuItem
-            // 
-            printToolStripMenuItem.Image = (Image)resources.GetObject("printToolStripMenuItem.Image");
-            printToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            printToolStripMenuItem.Name = "printToolStripMenuItem";
-            printToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.P;
-            printToolStripMenuItem.Size = new Size(181, 26);
-            printToolStripMenuItem.Text = "&Print";
-            // 
-            // printPreviewToolStripMenuItem
-            // 
-            printPreviewToolStripMenuItem.Image = (Image)resources.GetObject("printPreviewToolStripMenuItem.Image");
-            printPreviewToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-            printPreviewToolStripMenuItem.Size = new Size(181, 26);
-            printPreviewToolStripMenuItem.Text = "Print Pre&view";
-            // 
-            // toolStripSeparator2
-            // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(178, 6);
-            // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(181, 26);
+            exitToolStripMenuItem.Size = new Size(116, 26);
             exitToolStripMenuItem.Text = "E&xit";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
-            // editToolStripMenuItem
-            // 
-            editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { undoToolStripMenuItem, redoToolStripMenuItem, toolStripSeparator3, cutToolStripMenuItem, copyToolStripMenuItem, pasteToolStripMenuItem, toolStripSeparator4, selectAllToolStripMenuItem });
-            editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(49, 24);
-            editToolStripMenuItem.Text = "&Edit";
-            // 
-            // undoToolStripMenuItem
-            // 
-            undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            undoToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Z;
-            undoToolStripMenuItem.Size = new Size(179, 26);
-            undoToolStripMenuItem.Text = "&Undo";
-            // 
-            // redoToolStripMenuItem
-            // 
-            redoToolStripMenuItem.Name = "redoToolStripMenuItem";
-            redoToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.Y;
-            redoToolStripMenuItem.Size = new Size(179, 26);
-            redoToolStripMenuItem.Text = "&Redo";
-            // 
-            // toolStripSeparator3
-            // 
-            toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(176, 6);
-            // 
-            // cutToolStripMenuItem
-            // 
-            cutToolStripMenuItem.Image = (Image)resources.GetObject("cutToolStripMenuItem.Image");
-            cutToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            cutToolStripMenuItem.Name = "cutToolStripMenuItem";
-            cutToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.X;
-            cutToolStripMenuItem.Size = new Size(179, 26);
-            cutToolStripMenuItem.Text = "Cu&t";
-            // 
-            // copyToolStripMenuItem
-            // 
-            copyToolStripMenuItem.Image = (Image)resources.GetObject("copyToolStripMenuItem.Image");
-            copyToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            copyToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.C;
-            copyToolStripMenuItem.Size = new Size(179, 26);
-            copyToolStripMenuItem.Text = "&Copy";
-            // 
-            // pasteToolStripMenuItem
-            // 
-            pasteToolStripMenuItem.Image = (Image)resources.GetObject("pasteToolStripMenuItem.Image");
-            pasteToolStripMenuItem.ImageTransparentColor = Color.Magenta;
-            pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            pasteToolStripMenuItem.ShortcutKeys = Keys.Control | Keys.V;
-            pasteToolStripMenuItem.Size = new Size(179, 26);
-            pasteToolStripMenuItem.Text = "&Paste";
-            // 
-            // toolStripSeparator4
-            // 
-            toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(176, 6);
-            // 
-            // selectAllToolStripMenuItem
-            // 
-            selectAllToolStripMenuItem.Name = "selectAllToolStripMenuItem";
-            selectAllToolStripMenuItem.Size = new Size(179, 26);
-            selectAllToolStripMenuItem.Text = "Select &All";
-            // 
-            // toolsToolStripMenuItem
-            // 
-            toolsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { customizeToolStripMenuItem, optionsToolStripMenuItem });
-            toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            toolsToolStripMenuItem.Size = new Size(58, 24);
-            toolsToolStripMenuItem.Text = "&Tools";
-            // 
-            // customizeToolStripMenuItem
-            // 
-            customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            customizeToolStripMenuItem.Size = new Size(161, 26);
-            customizeToolStripMenuItem.Text = "&Customize";
-            // 
-            // optionsToolStripMenuItem
-            // 
-            optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            optionsToolStripMenuItem.Size = new Size(161, 26);
-            optionsToolStripMenuItem.Text = "&Options";
-            // 
             // helpToolStripMenuItem
             // 
-            helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { contentsToolStripMenuItem, indexToolStripMenuItem, searchToolStripMenuItem, toolStripSeparator5, aboutToolStripMenuItem });
+            helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             helpToolStripMenuItem.Size = new Size(55, 24);
             helpToolStripMenuItem.Text = "&Help";
             // 
-            // contentsToolStripMenuItem
-            // 
-            contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-            contentsToolStripMenuItem.Size = new Size(150, 26);
-            contentsToolStripMenuItem.Text = "&Contents";
-            // 
-            // indexToolStripMenuItem
-            // 
-            indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            indexToolStripMenuItem.Size = new Size(150, 26);
-            indexToolStripMenuItem.Text = "&Index";
-            // 
-            // searchToolStripMenuItem
-            // 
-            searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            searchToolStripMenuItem.Size = new Size(150, 26);
-            searchToolStripMenuItem.Text = "&Search";
-            // 
-            // toolStripSeparator5
-            // 
-            toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(147, 6);
-            // 
             // aboutToolStripMenuItem
             // 
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            aboutToolStripMenuItem.Size = new Size(150, 26);
+            aboutToolStripMenuItem.Size = new Size(142, 26);
             aboutToolStripMenuItem.Text = "&About...";
+            aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
             // 
-            // tabControl1
+            // MainTabControl
             // 
-            tabControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            tabControl1.Controls.Add(tabPage1);
-            tabControl1.Controls.Add(tabPage2);
-            tabControl1.Font = new Font("Segoe UI", 11F);
-            tabControl1.Location = new Point(95, 47);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(931, 922);
-            tabControl1.TabIndex = 1;
+            MainTabControl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            MainTabControl.Controls.Add(tabPage1);
+            MainTabControl.Controls.Add(tabPage2);
+            MainTabControl.Font = new Font("Segoe UI", 11F);
+            MainTabControl.Location = new Point(95, 47);
+            MainTabControl.Name = "MainTabControl";
+            MainTabControl.SelectedIndex = 0;
+            MainTabControl.Size = new Size(931, 922);
+            MainTabControl.TabIndex = 1;
             // 
             // tabPage1
             // 
@@ -723,7 +528,7 @@
             SearchUniButton.Location = new Point(740, 203);
             SearchUniButton.Name = "SearchUniButton";
             SearchUniButton.Size = new Size(115, 34);
-            SearchUniButton.TabIndex = 7;
+            SearchUniButton.TabIndex = 4;
             SearchUniButton.Text = "Шукати";
             SearchUniButton.UseVisualStyleBackColor = true;
             SearchUniButton.Click += SearchUniButton_Click;
@@ -734,7 +539,8 @@
             CityTextBox.Location = new Point(228, 100);
             CityTextBox.Name = "CityTextBox";
             CityTextBox.Size = new Size(627, 32);
-            CityTextBox.TabIndex = 6;
+            CityTextBox.TabIndex = 2;
+            CityTextBox.TextChanged += CityTextBox_TextChanged;
             // 
             // label4
             // 
@@ -751,7 +557,8 @@
             NameUniTextBox.Location = new Point(228, 152);
             NameUniTextBox.Name = "NameUniTextBox";
             NameUniTextBox.Size = new Size(627, 32);
-            NameUniTextBox.TabIndex = 4;
+            NameUniTextBox.TabIndex = 3;
+            NameUniTextBox.TextChanged += NameUniTextBox_TextChanged;
             // 
             // label3
             // 
@@ -803,7 +610,7 @@
             SortButton.Location = new Point(705, 826);
             SortButton.Name = "SortButton";
             SortButton.Size = new Size(138, 37);
-            SortButton.TabIndex = 18;
+            SortButton.TabIndex = 11;
             SortButton.Text = "Сортувати";
             SortButton.UseVisualStyleBackColor = true;
             SortButton.Click += SortButton_Click;
@@ -814,7 +621,7 @@
             ContractAmountRadioButton.Location = new Point(211, 830);
             ContractAmountRadioButton.Name = "ContractAmountRadioButton";
             ContractAmountRadioButton.Size = new Size(201, 29);
-            ContractAmountRadioButton.TabIndex = 17;
+            ContractAmountRadioButton.TabIndex = 10;
             ContractAmountRadioButton.TabStop = true;
             ContractAmountRadioButton.Text = "Вартістю контракту";
             ContractAmountRadioButton.UseVisualStyleBackColor = true;
@@ -825,9 +632,9 @@
             ContractGradeRadioButton.Location = new Point(211, 791);
             ContractGradeRadioButton.Name = "ContractGradeRadioButton";
             ContractGradeRadioButton.Size = new Size(429, 29);
-            ContractGradeRadioButton.TabIndex = 16;
+            ContractGradeRadioButton.TabIndex = 9;
             ContractGradeRadioButton.TabStop = true;
-            ContractGradeRadioButton.Text = "Прохідним балом на контракт минулого року";
+            ContractGradeRadioButton.Text = "Прохідним балом минулого року на контракт";
             ContractGradeRadioButton.UseVisualStyleBackColor = true;
             // 
             // BudgetGradeRadioButton
@@ -836,9 +643,9 @@
             BudgetGradeRadioButton.Location = new Point(211, 751);
             BudgetGradeRadioButton.Name = "BudgetGradeRadioButton";
             BudgetGradeRadioButton.Size = new Size(420, 29);
-            BudgetGradeRadioButton.TabIndex = 15;
+            BudgetGradeRadioButton.TabIndex = 8;
             BudgetGradeRadioButton.TabStop = true;
-            BudgetGradeRadioButton.Text = "Прохідним балом на бюджет минулого року";
+            BudgetGradeRadioButton.Text = "Прохідним балом минулого року на бюджет";
             BudgetGradeRadioButton.UseVisualStyleBackColor = true;
             // 
             // label8
@@ -856,7 +663,7 @@
             BudgetCheckBox.Location = new Point(56, 210);
             BudgetCheckBox.Name = "BudgetCheckBox";
             BudgetCheckBox.Size = new Size(498, 29);
-            BudgetCheckBox.TabIndex = 13;
+            BudgetCheckBox.TabIndex = 5;
             BudgetCheckBox.Text = "Тільки спеціальності з можливістю вступу на бюджет";
             BudgetCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -906,7 +713,7 @@
             SpecDataGridView.RowTemplate.Height = 50;
             SpecDataGridView.RowTemplate.ReadOnly = true;
             SpecDataGridView.Size = new Size(801, 419);
-            SpecDataGridView.TabIndex = 12;
+            SpecDataGridView.TabIndex = 7;
             SpecDataGridView.CellContentClick += SpecDataGridView_CellContentClick;
             SpecDataGridView.CellMouseEnter += SpecDataGridView_CellMouseEnter;
             SpecDataGridView.CellMouseLeave += SpecDataGridView_CellMouseLeave;
@@ -918,7 +725,7 @@
             EduFormComboBox.Location = new Point(669, 97);
             EduFormComboBox.Name = "EduFormComboBox";
             EduFormComboBox.Size = new Size(151, 33);
-            EduFormComboBox.TabIndex = 11;
+            EduFormComboBox.TabIndex = 4;
             // 
             // UniNameSpecTextBox
             // 
@@ -926,7 +733,8 @@
             UniNameSpecTextBox.Location = new Point(221, 148);
             UniNameSpecTextBox.Name = "UniNameSpecTextBox";
             UniNameSpecTextBox.Size = new Size(599, 32);
-            UniNameSpecTextBox.TabIndex = 10;
+            UniNameSpecTextBox.TabIndex = 3;
+            UniNameSpecTextBox.TextChanged += UniNameSpecTextBox_TextChanged;
             // 
             // label6
             // 
@@ -951,7 +759,7 @@
             SearchSpeciButton.Location = new Point(705, 250);
             SearchSpeciButton.Name = "SearchSpeciButton";
             SearchSpeciButton.Size = new Size(115, 37);
-            SearchSpeciButton.TabIndex = 5;
+            SearchSpeciButton.TabIndex = 6;
             SearchSpeciButton.Text = "Шукати";
             SearchSpeciButton.UseVisualStyleBackColor = true;
             SearchSpeciButton.Click += SearchSpeciButton_Click;
@@ -962,7 +770,8 @@
             NameSpeciTextBox.Location = new Point(221, 97);
             NameSpeciTextBox.Name = "NameSpeciTextBox";
             NameSpeciTextBox.Size = new Size(243, 32);
-            NameSpeciTextBox.TabIndex = 4;
+            NameSpeciTextBox.TabIndex = 2;
+            NameSpeciTextBox.TextChanged += NameSpeciTextBox_TextChanged;
             // 
             // label7
             // 
@@ -983,6 +792,17 @@
             label5.TabIndex = 0;
             label5.Text = "Введіть дані для пошуку";
             // 
+            // SavedButton
+            // 
+            SavedButton.Font = new Font("Segoe UI", 11F);
+            SavedButton.Location = new Point(881, 40);
+            SavedButton.Name = "SavedButton";
+            SavedButton.Size = new Size(141, 33);
+            SavedButton.TabIndex = 2;
+            SavedButton.Text = "Збережене";
+            SavedButton.UseVisualStyleBackColor = true;
+            SavedButton.Click += SavedButton_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -990,16 +810,18 @@
             AutoScroll = true;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(1116, 981);
-            Controls.Add(tabControl1);
+            Controls.Add(SavedButton);
+            Controls.Add(MainTabControl);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Довідник абітурієнта";
+            FormClosing += MainForm_FormClosing;
             Load += MainForm_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            tabControl1.ResumeLayout(false);
+            MainTabControl.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             tabPage2.ResumeLayout(false);
@@ -1013,35 +835,10 @@
 
         private MenuStrip menuStrip1;
         private ToolStripMenuItem fileToolStripMenuItem;
-        private ToolStripMenuItem newToolStripMenuItem;
-        private ToolStripMenuItem openToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator;
-        private ToolStripMenuItem saveToolStripMenuItem;
-        private ToolStripMenuItem saveAsToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator1;
-        private ToolStripMenuItem printToolStripMenuItem;
-        private ToolStripMenuItem printPreviewToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem exitToolStripMenuItem;
-        private ToolStripMenuItem editToolStripMenuItem;
-        private ToolStripMenuItem undoToolStripMenuItem;
-        private ToolStripMenuItem redoToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator3;
-        private ToolStripMenuItem cutToolStripMenuItem;
-        private ToolStripMenuItem copyToolStripMenuItem;
-        private ToolStripMenuItem pasteToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator4;
-        private ToolStripMenuItem selectAllToolStripMenuItem;
-        private ToolStripMenuItem toolsToolStripMenuItem;
-        private ToolStripMenuItem customizeToolStripMenuItem;
-        private ToolStripMenuItem optionsToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
-        private ToolStripMenuItem contentsToolStripMenuItem;
-        private ToolStripMenuItem indexToolStripMenuItem;
-        private ToolStripMenuItem searchToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator5;
         private ToolStripMenuItem aboutToolStripMenuItem;
-        private TabControl tabControl1;
+        private TabControl MainTabControl;
         private TabPage tabPage1;
         private TabPage tabPage2;
         private Label label1;
@@ -1091,5 +888,6 @@
         private RadioButton ContractAmountRadioButton;
         private RadioButton ContractGradeRadioButton;
         private RadioButton BudgetGradeRadioButton;
+        private Button SavedButton;
     }
 }
