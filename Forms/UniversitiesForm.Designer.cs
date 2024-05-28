@@ -60,28 +60,28 @@
             // 
             fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exitToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(46, 24);
-            fileToolStripMenuItem.Text = "&File";
+            fileToolStripMenuItem.Size = new Size(59, 24);
+            fileToolStripMenuItem.Text = "&Файл";
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(116, 26);
-            exitToolStripMenuItem.Text = "E&xit";
+            exitToolStripMenuItem.Size = new Size(224, 26);
+            exitToolStripMenuItem.Text = "В&ихід";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // helpToolStripMenuItem
             // 
             helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            helpToolStripMenuItem.Size = new Size(55, 24);
-            helpToolStripMenuItem.Text = "&Help";
+            helpToolStripMenuItem.Size = new Size(94, 24);
+            helpToolStripMenuItem.Text = "&Допомога";
             // 
             // aboutToolStripMenuItem
             // 
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             aboutToolStripMenuItem.Size = new Size(224, 26);
-            aboutToolStripMenuItem.Text = "&About...";
+            aboutToolStripMenuItem.Text = "&Про програму";
             aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
             // 
             // panel1

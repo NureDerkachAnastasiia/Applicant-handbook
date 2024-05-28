@@ -34,7 +34,7 @@ namespace CourseWork.Forms
             }
 
             SavedUnisDataGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            SavedUnisDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            SavedUnisDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             SavedUnisDataGridView.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             SavedUnisDataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
@@ -203,11 +203,13 @@ namespace CourseWork.Forms
             {
                 return;
             }
-            this.Hide();
+
             University uni = (University)SavedUnisDataGridView.Rows[e.RowIndex].DataBoundItem;
             InfoUniForm form = new InfoUniForm(this, uni, _mainForm);
+            
             form.Show();
             form.FillInfoUniForm(uni);
+            this.Close();
         }
 
         private void SavedSpecisDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -216,11 +218,12 @@ namespace CourseWork.Forms
             {
                 return;
             }
-            this.Hide();
+
             Speciality spec = (Speciality)SavedSpecisDataGridView.Rows[e.RowIndex].DataBoundItem;
             UniSpecForm form = new UniSpecForm(this, _mainForm, spec);
             form.Show();
             form.FillUniSpecForm(spec);
+            this.Hide();
         }
 
         private void SortButton_Click(object sender, EventArgs e)
@@ -302,6 +305,44 @@ namespace CourseWork.Forms
             this.Hide();
             AboutForm form = new AboutForm(this);
             form.Show();
+        }
+
+        private void SaveUnisToFileButton_Click(object sender, EventArgs e)
+        {
+            if(_mainForm.directory.SavedUnis.Count == 0)
+            {
+                MessageBox.Show("Немає що зберігати", "Список пустий");
+                return;
+            }
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            dialog.FilterIndex = 1;
+            dialog.RestoreDirectory = true;
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string path = dialog.FileName;
+                _mainForm.directory.SaveUnisToPrint(path);
+            }
+        }
+
+        private void SaveSpecisToFileButton_Click(object sender, EventArgs e)
+        {
+            if (_mainForm.directory.SavedSpecis.Count == 0)
+            {
+                MessageBox.Show("Немає що зберігати", "Список пустий");
+                return;
+            }
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            dialog.FilterIndex = 1;
+            dialog.RestoreDirectory = true;
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                string path = dialog.FileName;
+                _mainForm.directory.SaveSpecisToPrint(path);
+            }
         }
     }
 }

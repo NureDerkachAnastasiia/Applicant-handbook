@@ -44,7 +44,22 @@ namespace CourseWork
                 return false;
             }
             University other = (University)obj;
-            return Name == other.Name && City == other.City;
+            return Id == other.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
+
+        //Створення з екземпляра класу University рядка, що підходить для збереження у файл списку збережених університетів
+        //
+        public string UniToPrint()
+        {
+            string s = string.Join(", ", this.Specialities.Select(s => $"{s.Name} ({s.EducationForm})"));
+            string result = $"Назва ЗВО: {this.Name}\nКод ЄДБО: {this.Id}\nКерівник закладу: {this.Head}\nАдреса: {this.Adress}\nТелефон: {this.PhoneNum}\nE-mail: {this.Email}\nСпеціальності: {s}\n\n";
+            
+            return result;
         }
     }
 }

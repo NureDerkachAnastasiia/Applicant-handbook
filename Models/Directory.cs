@@ -10,14 +10,15 @@ namespace CourseWork
     public class Directory
     {
         public List<University> Unis { get; set; }
-        public List<Speciality> Specis { get; set; }
+        //public List<Speciality> Specis { get; set; }
         public List<University> SavedUnis { get; set; }
         public List<Speciality> SavedSpecis { get; set; }
+        public string Password { get; set; }
         
         public Directory()
         {
             Unis = new List<University>();
-            Specis = new List<Speciality>();
+            //Specis = new List<Speciality>();
             LoadData();
 
         }
@@ -27,14 +28,18 @@ namespace CourseWork
         public void LoadData()
         {
             string uniJson = File.ReadAllText("unis.txt");
-            string specJson = File.ReadAllText("specis.txt");
+            //string specJson = File.ReadAllText("specis.txt");
             string savedUniJson = File.ReadAllText("savedUnis.txt");
             string savedSpecJson = File.ReadAllText("savedSpec.txt");
 
             Unis = JsonSerializer.Deserialize<List<University>>(uniJson);
-            Specis = JsonSerializer.Deserialize<List<Speciality>>(specJson);
+            //Specis = JsonSerializer.Deserialize<List<Speciality>>(specJson);
             SavedUnis = JsonSerializer.Deserialize<List<University>>(savedUniJson);
             SavedSpecis = JsonSerializer.Deserialize<List<Speciality>>(savedSpecJson);
+            Password = File.ReadAllText("password.txt");
+
+            
+
         }
 
         //Збереження оновлених даних про збережені спеціальності та університети
@@ -43,12 +48,59 @@ namespace CourseWork
         {
             File.WriteAllText("savedUnis.txt", string.Empty);
             File.WriteAllText("savedSpec.txt", string.Empty);
+            File.WriteAllText("password.txt", string.Empty);
+            File.WriteAllText("unis.txt", string.Empty);
 
             string savedUniJson = JsonSerializer.Serialize(SavedUnis);
             string savedSpecJson = JsonSerializer.Serialize(SavedSpecis);
+            string unisJson = JsonSerializer.Serialize(Unis);
 
             File.WriteAllText("savedUnis.txt", savedUniJson);
             File.WriteAllText("savedSpec.txt", savedSpecJson);
+            File.WriteAllText("password.txt", Password);
+            File.WriteAllText("unis.txt", unisJson);
+        }
+
+        //Збереження списку збережених університетів у файл
+        //
+        public void SaveUnisToPrint(string path)
+        {
+            try
+            {
+                using (StreamWriter w = new StreamWriter(path))
+                {
+                    foreach(var uni in SavedUnis)
+                    {
+                        string s = uni.UniToPrint();
+                        w.WriteLine(s);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Помилка під час збереження файлу: {ex.Message}", "Помилка");
+            }
+        }
+
+        //Збереження списку збережених спеціальностей у файл
+        //
+        public void SaveSpecisToPrint(string path)
+        {
+            try
+            {
+                using(StreamWriter w = new StreamWriter(path))
+                {
+                    foreach(var spec in SavedSpecis)
+                    {
+                        string s = spec.SpecToPrint();
+                        w.WriteLine(s);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка під час збереження файлу: {ex.Message}", "Помилка");
+            }
         }
         
         //Додавання елемента до списку збережених університетів
@@ -157,14 +209,165 @@ namespace CourseWork
         {
             var result = new List<Speciality>();
 
-            foreach(var s in Specis)
+            /*foreach(var s in Specis)
             {
                 if(s.Name.Contains(name) && s.EducationForm.Contains(form) && s.Uni.Contains(uni) && s.Budget.Contains(budget))
                 {
                     result.Add(s);
                 }
+            }*/
+            foreach(var u in Unis)
+            {
+                foreach(var s in u.Specialities)
+                {
+                    if (s.Name.Contains(name) && s.EducationForm.Contains(form) && s.Uni.Contains(uni) && s.Budget.Contains(budget))
+                    {
+                        result.Add(s);
+                    }
+                }
             }
             return result;
+        }
+
+        public bool CheckPassword(string pass)
+        {
+            return pass == this.Password;
+        }
+
+        public void ChangePassword(string pass)
+        {
+            this.Password = pass;
+        }
+
+        public void RemoveAllSearchedUnis(List<University> unis)
+        {
+            Unis = Unis.Except(unis).ToList();
+            SavedUnis = SavedUnis.Except(unis).ToList();
+        }
+
+        public void RemoveSearchedUni(University uni)
+        {
+            var list = new List<University>
+            {
+                uni
+            };
+            Unis = Unis.Except(list).ToList();
+            SavedUnis = SavedUnis.Except(list).ToList();
+        }
+
+        public void RemoveAllSearchedSpecis(List<Speciality> specis)
+        {
+            foreach(var uni in Unis)
+            {
+                uni.Specialities = uni.Specialities.Except(specis).ToList();
+
+            }
+            foreach(var uni in SavedUnis)
+            {
+                uni.Specialities = uni.Specialities.Except(specis).ToList();
+            }
+            SavedSpecis = SavedSpecis.Except(specis).ToList();
+        }
+
+        public void RemoveSearchedSpec(Speciality spec)
+        {
+            var list = new List<Speciality> { spec };
+            foreach(var uni in Unis)
+            {
+                uni.Specialities = uni.Specialities.Except(list).ToList();
+            }
+            foreach (var uni in SavedUnis)
+            {
+                uni.Specialities = uni.Specialities.Except(list).ToList();
+            }
+            SavedSpecis = SavedSpecis.Except(list).ToList();
+        }
+
+        public void EditUni(University uni)
+        {
+            foreach(var u in Unis)
+            {
+                if (uni.Equals(u))
+                {
+                    u.Name = uni.Name;
+                    u.City = uni.City;
+                    u.Head = uni.Head;
+                    u.Id = uni.Id;
+                    u.PhoneNum = uni.PhoneNum;
+                    u.Adress = uni.Adress;
+                    u.Email = uni.Email;
+                    u.Specialities = uni.Specialities;
+                    break;
+                }
+            }
+            foreach (var u in SavedUnis)
+            {
+                if (uni.Equals(u))
+                {
+                    u.Name = uni.Name;
+                    u.City = uni.City;
+                    u.Head = uni.Head;
+                    u.Id = uni.Id;
+                    u.PhoneNum = uni.PhoneNum;
+                    u.Adress = uni.Adress;
+                    u.Email = uni.Email;
+                    u.Specialities = uni.Specialities;
+                    break;
+                }
+            }
+        }
+
+        public void AddSpecToUni(University uni, Speciality spec)
+        {
+            foreach(var u in Unis)
+            {
+                if (u.Equals(uni))
+                {
+                    u.Specialities.Add(spec);
+                }
+            }
+        }
+
+        public University FindUni(Speciality spec)
+        {
+            foreach(var uni in Unis)
+            {
+                foreach(var s in uni.Specialities)
+                {
+                    if (s.Equals(spec))
+                    {
+                        return uni;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public bool CheckIdUni(string id)
+        {
+            foreach(var uni in Unis)
+            {
+                if(uni.Id == id)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool CheckSpec(string name, string uni, string eduForm)
+        {
+            foreach(var u in Unis)
+            {
+                foreach(var s in u.Specialities)
+                {
+                    if(s.Name == name && s.Uni == uni && s.EducationForm == eduForm)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

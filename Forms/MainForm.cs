@@ -759,5 +759,11 @@ namespace CourseWork
                 UniNameSpecTextBox.SelectionStart = maxLength;
             }
         }
+
+        private void EditModeButton_Click(object sender, EventArgs e)
+        {
+            PasswordForm form = new PasswordForm(this);
+            form.Show();
+        }
     }
 }

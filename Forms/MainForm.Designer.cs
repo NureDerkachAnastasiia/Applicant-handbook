@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
@@ -87,6 +87,7 @@
             label7 = new Label();
             label5 = new Label();
             SavedButton = new Button();
+            EditModeButton = new Button();
             menuStrip1.SuspendLayout();
             MainTabControl.SuspendLayout();
             tabPage1.SuspendLayout();
@@ -109,28 +110,28 @@
             // 
             fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exitToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(46, 24);
-            fileToolStripMenuItem.Text = "&File";
+            fileToolStripMenuItem.Size = new Size(59, 24);
+            fileToolStripMenuItem.Text = "&Файл";
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(116, 26);
-            exitToolStripMenuItem.Text = "E&xit";
+            exitToolStripMenuItem.Size = new Size(129, 26);
+            exitToolStripMenuItem.Text = "В&ихід";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // helpToolStripMenuItem
             // 
             helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            helpToolStripMenuItem.Size = new Size(55, 24);
-            helpToolStripMenuItem.Text = "&Help";
+            helpToolStripMenuItem.Size = new Size(94, 24);
+            helpToolStripMenuItem.Text = "&Допомога";
             // 
             // aboutToolStripMenuItem
             // 
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            aboutToolStripMenuItem.Size = new Size(142, 26);
-            aboutToolStripMenuItem.Text = "&About...";
+            aboutToolStripMenuItem.Size = new Size(193, 26);
+            aboutToolStripMenuItem.Text = "&Про програму";
             aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
             // 
             // MainTabControl
@@ -678,36 +679,36 @@
             SpecDataGridView.BorderStyle = BorderStyle.Fixed3D;
             SpecDataGridView.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             SpecDataGridView.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(137, 171, 255);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 14F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            SpecDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(137, 171, 255);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 14F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            SpecDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             SpecDataGridView.ColumnHeadersHeight = 60;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            SpecDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 11F);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            SpecDataGridView.DefaultCellStyle = dataGridViewCellStyle5;
             SpecDataGridView.GridColor = SystemColors.Desktop;
             SpecDataGridView.Location = new Point(56, 311);
             SpecDataGridView.Name = "SpecDataGridView";
             SpecDataGridView.ReadOnly = true;
             SpecDataGridView.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            SpecDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            SpecDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             SpecDataGridView.RowHeadersVisible = false;
             SpecDataGridView.RowHeadersWidth = 51;
             SpecDataGridView.RowTemplate.Height = 50;
@@ -803,6 +804,17 @@
             SavedButton.UseVisualStyleBackColor = true;
             SavedButton.Click += SavedButton_Click;
             // 
+            // EditModeButton
+            // 
+            EditModeButton.Font = new Font("Segoe UI", 11F);
+            EditModeButton.Location = new Point(674, 40);
+            EditModeButton.Name = "EditModeButton";
+            EditModeButton.Size = new Size(203, 33);
+            EditModeButton.TabIndex = 3;
+            EditModeButton.Text = "Режим редагування";
+            EditModeButton.UseVisualStyleBackColor = true;
+            EditModeButton.Click += EditModeButton_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -810,6 +822,7 @@
             AutoScroll = true;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(1116, 981);
+            Controls.Add(EditModeButton);
             Controls.Add(SavedButton);
             Controls.Add(MainTabControl);
             Controls.Add(menuStrip1);
@@ -889,5 +902,6 @@
         private RadioButton ContractGradeRadioButton;
         private RadioButton BudgetGradeRadioButton;
         private Button SavedButton;
+        private Button EditModeButton;
     }
 }

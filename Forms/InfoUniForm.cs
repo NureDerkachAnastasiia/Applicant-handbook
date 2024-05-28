@@ -38,8 +38,16 @@ namespace CourseWork.Forms
 
         private void GoBackButton_Click(object sender, EventArgs e)
         {
+            if(_previousForm is SavedForm)
+            {
+                SavedForm form = new SavedForm(_mainForm);
+                form.Show();
+            }
+            else
+            {
+                _previousForm.Show();
+            }
             this.Close();
-            _previousForm.Show();
         }
 
         private void InfoUniForm_Load(object sender, EventArgs e)

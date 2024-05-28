@@ -41,11 +41,13 @@
             aboutToolStripMenuItem = new ToolStripMenuItem();
             SavedTabControl = new TabControl();
             tabPage1 = new TabPage();
+            SaveUnisToFileButton = new Button();
             RemoveUniButton = new Button();
             RemoveAllUniButton = new Button();
             SavedUnisDataGridView = new DataGridView();
             label1 = new Label();
             tabPage2 = new TabPage();
+            SaveSpecisToFileButton = new Button();
             RemoveSpecButton = new Button();
             RemoveAllSpecButton = new Button();
             SortButton = new Button();
@@ -79,28 +81,28 @@
             // 
             fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { exitToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(46, 24);
-            fileToolStripMenuItem.Text = "&File";
+            fileToolStripMenuItem.Size = new Size(59, 24);
+            fileToolStripMenuItem.Text = "&Файл";
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             exitToolStripMenuItem.Size = new Size(224, 26);
-            exitToolStripMenuItem.Text = "E&xit";
+            exitToolStripMenuItem.Text = "В&ихід";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
             // helpToolStripMenuItem
             // 
             helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            helpToolStripMenuItem.Size = new Size(55, 24);
-            helpToolStripMenuItem.Text = "&Help";
+            helpToolStripMenuItem.Size = new Size(94, 24);
+            helpToolStripMenuItem.Text = "&Допомога";
             // 
             // aboutToolStripMenuItem
             // 
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             aboutToolStripMenuItem.Size = new Size(224, 26);
-            aboutToolStripMenuItem.Text = "&About...";
+            aboutToolStripMenuItem.Text = "&Про програму";
             aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
             // 
             // SavedTabControl
@@ -118,6 +120,7 @@
             // tabPage1
             // 
             tabPage1.BackColor = Color.White;
+            tabPage1.Controls.Add(SaveUnisToFileButton);
             tabPage1.Controls.Add(RemoveUniButton);
             tabPage1.Controls.Add(RemoveAllUniButton);
             tabPage1.Controls.Add(SavedUnisDataGridView);
@@ -129,6 +132,16 @@
             tabPage1.Size = new Size(923, 884);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Збережені ЗВО";
+            // 
+            // SaveUnisToFileButton
+            // 
+            SaveUnisToFileButton.Location = new Point(420, 138);
+            SaveUnisToFileButton.Name = "SaveUnisToFileButton";
+            SaveUnisToFileButton.Size = new Size(185, 35);
+            SaveUnisToFileButton.TabIndex = 27;
+            SaveUnisToFileButton.Text = "Зберегти до файлу";
+            SaveUnisToFileButton.UseVisualStyleBackColor = true;
+            SaveUnisToFileButton.Click += SaveUnisToFileButton_Click;
             // 
             // RemoveUniButton
             // 
@@ -214,6 +227,7 @@
             // tabPage2
             // 
             tabPage2.BackColor = Color.White;
+            tabPage2.Controls.Add(SaveSpecisToFileButton);
             tabPage2.Controls.Add(RemoveSpecButton);
             tabPage2.Controls.Add(RemoveAllSpecButton);
             tabPage2.Controls.Add(SortButton);
@@ -230,6 +244,16 @@
             tabPage2.Size = new Size(923, 884);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Збережені спеціальності";
+            // 
+            // SaveSpecisToFileButton
+            // 
+            SaveSpecisToFileButton.Location = new Point(404, 111);
+            SaveSpecisToFileButton.Name = "SaveSpecisToFileButton";
+            SaveSpecisToFileButton.Size = new Size(185, 35);
+            SaveSpecisToFileButton.TabIndex = 28;
+            SaveSpecisToFileButton.Text = "Зберегти до файлу";
+            SaveSpecisToFileButton.UseVisualStyleBackColor = true;
+            SaveSpecisToFileButton.Click += SaveSpecisToFileButton_Click;
             // 
             // RemoveSpecButton
             // 
@@ -424,5 +448,7 @@
         private Button RemoveAllSpecButton;
         private Button RemoveSpecButton;
         private Button RemoveUniButton;
+        private Button SaveUnisToFileButton;
+        private Button SaveSpecisToFileButton;
     }
 }
